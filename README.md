@@ -45,7 +45,7 @@ This will run the simulation and display various plots showcasing the impact of 
 
 ## Results
 
-The simulation provides insights into how individual bee traits affect hive behavior. Key findings include the optimal trait combinations that maximize nectar quantity and quality within the hive. The simulation results are presented graphically in the output plots.
+The simulation provides insights into how individual bee traits affect hive behavior. Key findings include the optimal trait combinations that maximize nectar quantity and quality within the hive, and the tradeoff between homogeneity and heterogeneity in the traits of bees within the hive. The simulation results are presented graphically in the output plots.
 
 ## License
 
