@@ -122,7 +122,7 @@ def create_hive(num_bees, std_dev=0.25, mean_exploration=0.5, mean_boldness=0.5,
 
     dancing_bees_heap = []  # Max heap for dancing bees based on nectar quality
     cur_quan, cur_qual = 0, 0
-    not_foraged_yet = True  # todo: we can also make a bee that is sociable and not find another sociable bee dancing to
+    not_foraged_yet = True
     # not forage at all. the results are a bit different in the scenario.
     for cur_bee in bees:
         if cur_bee.sociability > SOCIAL_THRESHOLD:  # follow other social bees that dance if there exists one
@@ -319,7 +319,7 @@ def find_optimal_combination(results):
     """
 
     # for quality
-    max_quality = max(result[2] for result in results)  # todo: need to refer to all the 3 dependant variables
+    max_quality = max(result[2] for result in results)
     optimal_combinations_qual = [result for result in results if result[2] == max_quality]
 
     # for quantity
