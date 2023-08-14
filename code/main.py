@@ -1,3 +1,4 @@
+
 import heapq
 import random
 import matplotlib.pyplot as plt
@@ -160,51 +161,37 @@ def simulate_hive_model(num_bees, num_simulations):
     :param num_bees: Number of bees in the hive.
     :param num_simulations: Number of simulations to run.
     """
-    # Lists to store simulation results
-    avg_exploration = []
-    avg_boldness = []
-    avg_sociability = []
+    # Lists to store simulation results for the desired metrics
     avg_quantity = []
     avg_quality = []
     avg_survival = []
 
     for _ in range(num_simulations):
         hive_results = create_hive(num_bees)
-        hive_nectar_quantity, hive_nectar_quality, surviving_bees, avg_exploration_val, avg_boldness_val, avg_sociability_val = hive_results
+        hive_nectar_quantity, hive_nectar_quality, surviving_bees = hive_results[0], hive_results[1], hive_results[2]
 
-        avg_exploration.append(avg_exploration_val)
-        avg_boldness.append(avg_boldness_val)
-        avg_sociability.append(avg_sociability_val)
         avg_quantity.append(hive_nectar_quantity)
         avg_quality.append(hive_nectar_quality)
         avg_survival.append(surviving_bees / num_bees)
 
-    # Plot the results
-    fig, axs = plt.subplots(2, 3, figsize=(18, 10))
+    # Plot the results for the desired metrics
+    fig, axs = plt.subplots(1, 3, figsize=(18, 6))
 
-    axs[0, 0].hist(avg_exploration, bins=20, color='blue', alpha=0.7)
-    axs[0, 0].set_title("Average Exploration Distribution. std=0.2, mean=0.5")
+    axs[0].hist(avg_quantity, bins=20, color='purple', alpha=0.7)
+    axs[0].set_title("Average Nectar Quantity Distribution")
 
-    axs[0, 1].hist(avg_boldness, bins=20, color='green', alpha=0.7)
-    axs[0, 1].set_title("Average Boldness Distribution. std=0.2, mean=0.5")
+    axs[1].hist(avg_quality, bins=20, color='red', alpha=0.7)
+    axs[1].set_title("Average Nectar Quality Distribution")
 
-    axs[0, 2].hist(avg_sociability, bins=20, color='orange', alpha=0.7)
-    axs[0, 2].set_title("Average Sociability Distribution. std=0.2, mean=0.5")
+    axs[2].hist(avg_survival, bins=20, color='gray', alpha=0.7)
+    axs[2].set_title("Average Bee Survival Distribution")
 
-    axs[1, 0].hist(avg_quantity, bins=20, color='purple', alpha=0.7)
-    axs[1, 0].set_title("Average Nectar Quantity Distribution. std=0.2, mean=0.5")
-
-    axs[1, 1].hist(avg_quality, bins=20, color='red', alpha=0.7)
-    axs[1, 1].set_title("Average Nectar Quality Distribution. std=0.2, mean=0.5")
-
-    axs[1, 2].hist(avg_survival, bins=20, color='gray', alpha=0.7)
-    axs[1, 2].set_title("Average Bee Survival Distribution. std=0.2, mean=0.5")
-
-    for ax in axs.flat:
+    for ax in axs:
         ax.set_xlabel('Value')
         ax.set_ylabel('Frequency')
         ax.grid(True)
 
+    fig.suptitle("Evaluating Hive Metrics for Bees: Insights from a Gaussian Distribution (μ=0.5, σ=0.2)")
     plt.tight_layout()
     plt.show()
 
@@ -262,21 +249,21 @@ def plot_simulation_results(results):
     # Nectar Quantity
     axs[0].plot(results['std_dev'], np.array(results['avg_quantity']), label='Avg Nectar Quantity', color='blue')
     axs[0].set_title('Average Nectar Quantity')
-    axs[0].set_xlabel('Std Deviation')
+    axs[0].set_xlabel('Std')
     axs[0].set_ylabel('Average Value')
     axs[0].legend()
 
     # Nectar Quality
     axs[1].plot(results['std_dev'], np.array(results['avg_quality']), label='Avg Nectar Quality', color='red')
     axs[1].set_title('Average Nectar Quality')
-    axs[1].set_xlabel('Std Deviation')
+    axs[1].set_xlabel('Std')
     axs[1].set_ylabel('Average Value')
     axs[1].legend()
 
     # Survival rate
     axs[2].plot(results['std_dev'], np.array(results['avg_survival']), label='Avg Bee Survival', color='green')
     axs[2].set_title('Average Bee Survival Rate')
-    axs[2].set_xlabel('Std Deviation')
+    axs[2].set_xlabel('Std')
     axs[2].set_ylabel('Average Survival Rate')
     axs[2].legend()
 
@@ -284,8 +271,8 @@ def plot_simulation_results(results):
     axs[3].plot(results['std_dev'], results['avg_exploration'], label='Avg Exploration', color='purple')
     axs[3].plot(results['std_dev'], results['avg_boldness'], label='Avg Boldness', color='cyan')
     axs[3].plot(results['std_dev'], results['avg_sociability'], label='Avg Sociability', color='orange')
-    axs[3].set_title('Traits vs. Std Deviation')
-    axs[3].set_xlabel('Std Deviation')
+    axs[3].set_title('Traits as Function of Standard Deviation')
+    axs[3].set_xlabel('Std')
     axs[3].set_ylabel('Average Trait Value')
     axs[3].legend()
 
@@ -372,7 +359,7 @@ def plot_optimal_combination(combinations_with_results, optimal_combinations_qua
     ax1.set_title('Nectar Quantity')
     ax1.set_xlabel('Exploration')
     ax1.set_ylabel('Boldness')
-    ax1.set_zlabel('Sociability')
+    ax1.set_zlabel('Sociability', labelpad=10)  # Adjust labelpad to move the label closer
     fig.colorbar(sc1, ax=ax1, label='Nectar Quantity')  # Add colorbar for quantity
 
     # Plot for Nectar Quality
@@ -381,17 +368,13 @@ def plot_optimal_combination(combinations_with_results, optimal_combinations_qua
     ax2.set_title('Nectar Quality')
     ax2.set_xlabel('Exploration')
     ax2.set_ylabel('Boldness')
-    ax2.set_zlabel('Sociability')
+    ax2.set_zlabel('Sociability', labelpad=10)  # Adjust labelpad to move the label closer
     fig.colorbar(sc2, ax=ax2, label='Nectar Quality')  # Add colorbar for quality
 
     # Adjust subplot layout
     plt.tight_layout()
 
-    # Adjust margins and spacing
-    plt.subplots_adjust(left=0.05, right=0.95, top=0.9, bottom=0.1, wspace=0.2)
-
     plt.show()
-
 
 
 def main():
@@ -436,4 +419,6 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    for _ in range(10):
+        main()
+
