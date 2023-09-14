@@ -2,7 +2,7 @@
 
 This repository contains a Python simulation and analysis of bee hive behavior based on different traits and behaviors of individual bees. The simulation explores how the traits of exploration, boldness, and sociability affect the overall nectar quantity and quality collected by the hive.
 
-![Alt Text](https://img.freepik.com/free-vector/cute-bee-flying-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector_138676-6016.jpg)
+<img src="https://img.freepik.com/free-vector/cute-bee-flying-cartoon-vector-icon-illustration-animal-nature-icon-concept-isolated-premium-vector_138676-6016.jpg" alt="Alt Text" width="200px" height="150px">
 
 
 ## Overview
