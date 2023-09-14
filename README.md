@@ -49,6 +49,7 @@ This will run the simulation and display various plots showcasing the impact of 
 ## Results
 
 The simulation provides insights into how individual bee traits affect hive behavior. Key findings include the optimal trait combinations that maximize nectar quantity and quality within the hive, and the tradeoff between homogeneity and heterogeneity in the traits of bees within the hive. The simulation results are presented graphically in the output plots.
+
 <div style="display: flex; justify-content: space-between;">
     <img width="861" alt="image" src="https://github.com/shirashko/cognitionAndComputationInAnimals/assets/130151997/9a3faf30-d4ef-4c37-a70f-cf71d2ccfb63">
     <img width="541" alt="image" src="https://github.com/shirashko/cognitionAndComputationInAnimals/assets/130151997/026ae671-a585-44e8-b0e0-d66b481ed250">
