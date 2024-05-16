@@ -54,10 +54,3 @@ The simulation provides insights into how individual bee traits affect hive beha
     <img width="861" alt="image" src="https://github.com/shirashko/cognitionAndComputationInAnimals/assets/130151997/9a3faf30-d4ef-4c37-a70f-cf71d2ccfb63">
     <img width="541" alt="image" src="https://github.com/shirashko/cognitionAndComputationInAnimals/assets/130151997/026ae671-a585-44e8-b0e0-d66b481ed250">
 </div>
-
-
-
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
